@@ -16,18 +16,17 @@
 
 const dayNumber = +prompt('Введите число от 1 до 32');
 if (dayNumber >= 1 & dayNumber < 32) {
-    const N1 = dayNumber;
-    let N2 = Math.trunc(N1 / 10);
-    if (N2 === 3) {
-        console.log(`Число ${N1} попадает в ${N2} декаду месяца`);
-    } else if (N2 === 2) {
-        console.log(`Число ${N1} попадает в ${N2} декаду месяца`);
-    } else if (N2 === 1) {
-        console.log(`Число ${N1} попадает в ${N2} декаду месяца`);
-    } else if (N2 === 0) {
-        console.log(`Число ${N1} попадает в ${N2} декаду месяца`);
+    let n2 = Math.trunc(dayNumber / 10);
+    if (n2 === 3) {
+        console.log(`Число ${dayNumber} попадает в ${n2} декаду месяца`);
+    } else if (n2 === 2) {
+        console.log(`Число ${dayNumber} попадает в ${n2} декаду месяца`);
+    } else if (n2 === 1) {
+        console.log(`Число ${dayNumber} попадает в ${n2} декаду месяца`);
+    } else if (n2 === 0) {
+        console.log(`Число ${dayNumber} попадает в ${n2} декаду месяца`);
     }
         
 } else {
-    console.log("Неверное значение")
+    console.log("Неверное значение");
 }

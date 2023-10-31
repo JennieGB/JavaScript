@@ -13,7 +13,7 @@
 Уточнение: пользователь всегда вводит корректное число.
 */
 
-const askTemperature = prompt("Введите температуру в градусах Цельсия");
-const C = askTemperature;
-const F = (9 / 5) * C + 32;
-console.log(`Цельсий: ${C}, Фаренгейт: ${F}`);
+const temperature = +prompt("Введите температуру в градусах Цельсия");
+const cels = temperature;
+const fareng = (9 / 5) * cels + 32;
+alert(`Цельсий: ${cels}, Фаренгейт: ${Math.round(fareng)}`);
