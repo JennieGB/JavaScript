@@ -1,0 +1,20 @@
+/* Добавьте стили, если требуется */
+#catContent {
+    text-align: center;
+}
+
+#catContent img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#catContent h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+#catContent p {
+    color: #666;
+    font-size: 16px;
+}
