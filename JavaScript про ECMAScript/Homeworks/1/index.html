@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        p {
+            color: #666;
+            font-size: 16px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Homework 1</h1>
+    <ol>
+        <li>
+            <p>Дан массив <code>const arr = [1, 5, 7, 9]</code> с помощью <code>Math.min</code> и spread оператора, найти минимальное число в массиве, решение задания должно состоять из одной строки.</p>
+        </li>
+        <li>
+            <p>Напишите функцию <code>createCounter</code>, которая создает счетчик и возвращает объект с двумя методами: <code>increment</code> и <code>decrement</code>. Метод <code>increment</code> должен увеличивать значение счетчика на 1, а метод <code>decrement</code> должен уменьшать значение счетчика на 1. Значение счетчика должно быть доступно только через методы объекта, а не напрямую.</p>
+        </li>
+        <li>
+            <p>Напишите рекурсивную функцию <code>findElementByClass</code>, которая принимает корневой элемент дерева DOM и название класса в качестве аргументов и возвращает первый найденный элемент с указанным классом в этом дереве.</p>
+            <p><strong>Пример:</strong></p>
+            <code>
+            const rootElement = document.getElementById('root');<br>
+            const targetElement = findElementByClass(rootElement, 'my-class');<br>
+            console.log(targetElement);
+            </code>
+        </li>
+    </ol>
+
+    <div class="wrap1" id="root1">
+       <div class="class1">
+          <div class="class2">
+             <div class="class3">
+                <div class="class4">
+                   <div class="class5"></div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ 
+    <div class="wrap" id="root">
+       <div class="chaeld1">
+          <div class="chaeld2"></div>
+          <div class="my-class">
+             <div class="my-class5"></div>
+          </div>
+          <div class="chaeld3"></div>
+       </div>
+       <div class="chaeld4">
+          <div class="chaeld5"></div>
+          <div class="my-class">
+             <div class="my-class10"></div>
+          </div>
+          <div class="chaeld6"></div>
+       </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
