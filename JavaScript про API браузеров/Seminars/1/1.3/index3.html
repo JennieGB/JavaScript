@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Статьи</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Статьи</h1>
+    <button id="addArticleBtn" class="btn btn-primary mb-3">Добавить статью</button>
+    <div id="articleList"></div>
+  </div>
+
+  <!-- Bootstrap modal for editing article -->
+  <div class="modal fade" id="editArticleModal" tabindex="-1" role="dialog" aria-labelledby="editArticleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editArticleModalLabel">Редактировать статью</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="editTitle">Заголовок</label>
+            <input type="text" class="form-control" id="editTitle">
+          </div>
+          <div class="form-group">
+            <label for="editContent">Содержание</label>
+            <textarea class="form-control" id="editContent" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-primary" id="saveChangesBtn">Сохранить изменения</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const articlesData = [
+      { title: 'Заголовок статьи 1', content: 'Содержание статьи 1' },
+      { title: 'Заголовок статьи 2', content: 'Содержание статьи 2' }
+    ];
+
+    let articles = JSON.parse(localStorage.getItem('articles')) || articlesData;
+
+    function renderArticles() {
+      const articleList = document.getElementById('articleList');
+      articleList.innerHTML = '';
+      articles.forEach((article, index) => {
+        const articleHtml = `
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">${article.title}</h5>
+              <p class="card-text">${article.content}</p>
+              <button class="btn btn-danger" onclick="deleteArticle(${index})">Удалить</button>
+              <button class="btn btn-primary" onclick="editArticle(${index})">Редактировать</button>
+            </div>
+          </div>
+        `;
+        articleList.innerHTML += articleHtml;
+      });
+    }
+
+    function saveArticles() {
+      localStorage.setItem('articles', JSON.stringify(articles));
+    }
+
+    function addArticle() {
+      const newArticle = { title: 'Новая статья', content: 'Введите содержание статьи...' };
+      articles.push(newArticle);
+      saveArticles();
+      renderArticles();
+    }
+
+    function deleteArticle(index) {
+      articles.splice(index, 1);
+      saveArticles();
+      renderArticles();
+    }
+
+    function editArticle(index) {
+      const article = articles[index];
+      document.getElementById('editTitle').value = article.title;
+      document.getElementById('editContent').value = article.content;
+      $('#editArticleModal').modal('show');
+      $('#saveChangesBtn').click(() => {
+        article.title = document.getElementById('editTitle').value;
+        article.content = document.getElementById('editContent').value;
+        saveArticles();
+        renderArticles();
+        $('#editArticleModal').modal('hide');
+      });
+    }
+
+    document.getElementById('addArticleBtn').addEventListener('click', addArticle);
+
+    renderArticles();
+  </script>
+</body>
+</html>

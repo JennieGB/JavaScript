@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписание занятий</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Расписание занятий</h1>
+    <div id="schedule" class="row"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Загрузка данных о занятиях из JSON-данных (можно использовать fetch)
+
+    const scheduleData = [
+      { name: 'Занятие 1', time: '10:00', maxParticipants: 10, currentParticipants: 5 },
+      { name: 'Занятие 2', time: '12:00', maxParticipants: 15, currentParticipants: 10 },
+      { name: 'Занятие 3', time: '15:00', maxParticipants: 8, currentParticipants: 7 }
+    ];
+
+    function renderSchedule() {
+      const scheduleElement = document.getElementById('schedule');
+      scheduleElement.innerHTML = '';
+      scheduleData.forEach((item, index) => {
+        const cardHtml = `
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">${item.name}</h5>
+                <p class="card-text">Время: ${item.time}</p>
+                <p class="card-text">Макс. участников: ${item.maxParticipants}</p>
+                <p class="card-text">Текущ. участников: ${item.currentParticipants}</p>
+                <button class="btn btn-primary" onclick="signUp(${index})">Записаться</button>
+                <button class="btn btn-danger" onclick="cancelSignUp(${index})">Отменить запись</button>
+              </div>
+            </div>
+          </div>
+        `;
+        scheduleElement.innerHTML += cardHtml;
+      });
+    }
+
+    function signUp(index) {
+      if (scheduleData[index].currentParticipants < scheduleData[index].maxParticipants) {
+        scheduleData[index].currentParticipants++;
+        renderSchedule();
+      }
+    }
+
+    function cancelSignUp(index) {
+      if (scheduleData[index].currentParticipants > 0) {
+        scheduleData[index].currentParticipants--;
+        renderSchedule();
+      }
+    }
+
+    renderSchedule();
+  </script>
+</body>
+</html>
