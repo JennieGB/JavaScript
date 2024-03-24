@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button Example</title>
+</head>
+<body>
+<button id="buyButton">Купить</button>
+
+<script>
+document.getElementById("buyButton").addEventListener("click", function(event) {
+  // Проверяем, является ли событие доверенным
+  if (event.isTrusted) {
+    const button = event.target;
+    const originalText = button.textContent;
+    
+    // Меняем текст кнопки на "Товар добавлен в корзину"
+    button.textContent = "Товар добавлен в корзину";
+
+    // Устанавливаем таймер на 2 секунды для возврата текста кнопки в исходное состояние
+    setTimeout(function() {
+      button.textContent = originalText;
+    }, 2000);
+  }
+});
+</script>
+</body>
+</html>
