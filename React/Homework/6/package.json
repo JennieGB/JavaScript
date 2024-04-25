@@ -1,0 +1,20 @@
+{
+  "name": "6",
+  "version": "0.1.0",
+  "private": true,    
+  "scripts": {
+      "start": "react-scripts start",
+      "test": "react-scripts test",
+      "build": "react-scripts build",
+      "eject": "react-scripts eject"
+    },
+    "dependencies": {
+      "@reduxjs/toolkit": "^2.2.3",
+      "react-redux": "^9.1.1",
+      "react-router-dom": "^6.22.3",
+      "uuid": "^9.0.1"
+    },
+    "devDependencies": {
+      // ваш список зависимостей для разработки
+    }
+  }
